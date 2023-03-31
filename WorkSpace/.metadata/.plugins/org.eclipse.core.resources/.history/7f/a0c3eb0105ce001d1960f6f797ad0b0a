@@ -1,0 +1,21 @@
+package pack08_casting;
+
+public class Ex02_Casting {
+
+	public static void main(String[] args) {
+		
+		//문자열 = "12" + 34 = 1234
+		//String + int = String
+		//why? 문자열 + 어떤값 = 문자열 규칙!
+		//문자열 결합의 법칙 ↑
+		
+		String s1 = "12"+0;
+		int s = 34;
+		System.out.println(s1+s);
+		
+		
+		
+		
+	}
+
+}

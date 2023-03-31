@@ -1,0 +1,17 @@
+package pack09_scanner;
+
+import java.util.*;
+
+public class Ex01_Scanner {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("대기");
+		String inputData = sc.nextLine();
+		System.out.println(inputData);
+		System.out.println("여기까지");
+
+	}
+
+}

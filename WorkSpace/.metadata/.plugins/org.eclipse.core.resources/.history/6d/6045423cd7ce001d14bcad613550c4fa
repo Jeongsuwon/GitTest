@@ -1,0 +1,16 @@
+package Test_01;
+
+import java.util.*;
+public class Test_02 {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		double dNum1 = Double.parseDouble(str);
+		System.out.println((int)dNum1);
+		
+		
+		
+	}
+}

@@ -1,0 +1,17 @@
+package test01_Variable;
+
+public class Test {
+
+	public static void main(String[] args) {
+		int a;
+		a = 14;
+		int b = 2;
+		 
+		
+		System.out.println(a+b);
+		
+		
+
+	}
+
+}
