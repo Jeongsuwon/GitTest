@@ -7,7 +7,6 @@ public class Test03 {
 		//scanner이용해보기.
 		Scanner sc = new Scanner(System.in);
 		String inputData1 = sc.nextLine();
-			   inputData1 = sc.nextLine();
 		
 		int iNum = Integer.parseInt(inputData1);
 		String num1 = iNum % 2 == 0 ? "짝수" : "홀수";
