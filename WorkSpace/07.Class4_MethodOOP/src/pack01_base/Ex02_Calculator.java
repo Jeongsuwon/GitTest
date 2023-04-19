@@ -5,7 +5,7 @@ public class Ex02_Calculator {
 	//메소드의 구조.
 	//생성자 메소드(Constuctor) : 객체를 생성할 때 필요한 메소드
 	
-	//void 메소드이름(파라미터부){
+	//return타입 메소드이름(파라미터부){
 	// 메소드 내용(코드)
 	//}
 	//파라미터부: 어떤 것이든 메소드가 실행될 때 필요한 변수, 클래스 등의 
@@ -19,12 +19,13 @@ public class Ex02_Calculator {
 		System.out.println("전원을 켭니다.");
 	}
 	
-	//powerOff에서 메인에 접근이 되는 이유 : main의 static은 인스턴스화 과정이 없이 *메모리에 항상 먼저 올라가있기때문에*
-	//main에서 powerOff에 접근이 안되는 이유 : iv는 인스턴스화를 거쳐야하기에 static이 호출 시 메모리에 존재하고 있을지 의문
-	
 	void powerOff() {
 		System.out.println("전원을 끕니다.");
 	}
+	
+	//powerOff에서 메인에 접근이 되는 이유 : main의 static은 인스턴스화 과정이 없이 *메모리에 항상 먼저 올라가있기때문에*
+	//main에서 powerOff에 접근이 안되는 이유 : iv는 인스턴스화를 거쳐야하기에 static이 호출 시 메모리에 존재하고 있을지 의문
+	
 	
 	//void인지 void가 아닌지에 따라 리턴타입이 결정된다.
 	//내가 알고있는 모든 타입 -> 리턴 타입으로 사용이 가능
