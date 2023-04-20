@@ -9,7 +9,8 @@ public class JapangiDAO {
 	int money = 0; //소지금
 	int choice; // 음료 선택
 	int num; // 음료 개수
-	int adChoice;
+	int adChoice; // 관리자 옵션 선택
+	int c1000, c500, c100, c50, c10;
 	Scanner sc = new Scanner(System.in);
 	
 	
@@ -46,7 +47,7 @@ public class JapangiDAO {
 			System.out.println(jpArr[0].getNum()+ ". " +jpArr[0].getDrink()+ "  " + jpArr[0].getPrice()+"원  "+jpArr[0].getCount()+"개");
 			System.out.println(jpArr[1].getNum()+ ". " +jpArr[1].getDrink()+ "  " + jpArr[1].getPrice()+"원  "+jpArr[1].getCount()+"개");
 			System.out.println(jpArr[2].getNum()+ ". " +jpArr[2].getDrink()+ "  " + jpArr[2].getPrice()+"원  "+jpArr[2].getCount()+"개");
-			System.out.println("＊구매를 원하지 않으시면 0번＊");
+			System.out.println("＊구매를 종료하시려면 0번＊");
 			System.out.println("주문하실 음료 번호를 선택해주세요");
 			choice = Integer.parseInt(sc.nextLine());
 				if(choice==1 && jpArr[0].getCount() ==0) {
@@ -88,11 +89,29 @@ public class JapangiDAO {
 					}else {
 						System.out.println("금액이 부족합니다.");
 					}
-				}else if(choice<1 || choice >3){
+				}else if(choice>3){
 					System.out.println("번호를 잘못입력했습니다. 다시 입력해주세요.");
 				}else {
 					System.out.println("안녕히가세요");
-					System.out.println("잔액: " + money); // 정해진 단위로 반환해야함
+					// 정해진 단위로 잔돈 반환해야함
+					c1000=money/1000;
+					c500=money%1000/500;
+					c100=money%1000%500/100;
+					c50=money%1000%500%100/50;
+					c10=money%1000%500%100%50/10;
+					if(money>=1000) {
+						System.out.println("잔액은 1000원: " + c1000 +"개 /" + "500원: " + c500 + "개 /" 
+											+ "100원: " + c100 +"개 /" + "50원: " + c50 + "개 /" + "10원: "+c10+"개" ); 						
+					}else if(money>=500) {
+						System.out.println("잔액은 500원: " + c500 + "개 /" + "100원: " + c100 +"개 /" 
+											+ "50원: " + c50 + "개 /" + "10원: "+c10+"개" );
+					}else if(money>=100) {
+						System.out.println("잔액은 100원: " + c100 +"개 /" + "50원: " + c50 + "개 /" + "10원: "+c10+"개" );
+					}else if(money>=50) {
+						System.out.println("잔액은 50원: " + c50 + "개 /" + "10원: "+c10+"개" );					
+						}else {
+							System.out.println("잔액은 10원: "+c10+"개" );
+					}
 					break;
 				}
 				
