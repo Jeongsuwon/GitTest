@@ -1,16 +1,19 @@
-package pack01_toy;
+package Test_01;
 
 public class JapangiMain {
-public static void main(String[] args) {
-	JapangiDTO[] jpArr = new JapangiDTO[4];
-	
-	jpArr[0]= new JapangiDTO(1, "ÏΩúÎùº", 800, 8);
-	jpArr[1]= new JapangiDTO(2, "ÏÇ¨Ïù¥Îã§", 1000, 5);
-	jpArr[2]= new JapangiDTO(3, "ÌôòÌÉÄ", 900, 1);
-	
-	JapangiDAO dao = new JapangiDAO();
-	dao.moneyScanner();
-	dao.drink(jpArr);
-	dao.admin(jpArr);
-}
+
+	public static void main(String[] args) {
+		JapangiDTO[] jpArr = new JapangiDTO[4];
+		JapangiDAO dao = new JapangiDAO();
+		
+		jpArr[0]= new JapangiDTO(1, "ƒ›∂Û", 800, 8);
+		jpArr[1]= new JapangiDTO(2, "ªÁ¿Ã¥Ÿ", 1000, 5);
+		jpArr[2]= new JapangiDTO(3, "»Ø≈∏", 900, 1);
+		
+		dao.admin(jpArr);
+		dao.moneyScanner();
+		dao.drink(jpArr);
+
+	}
+
 }

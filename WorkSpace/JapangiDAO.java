@@ -1,146 +1,218 @@
-package pack01_toy;
+package Test_01;
 
 import java.util.Scanner;
 
 public class JapangiDAO {
-	
 	private JapangiDTO[] jpArr;
 	boolean input = true;
-	int money = 0; //ì†Œì§€ê¸ˆ
-	int choice; // ìŒë£Œ ì„ íƒ
-	int num; // ìŒë£Œ ê°œìˆ˜
-	int adChoice; // ê´€ë¦¬ì ì˜µì…˜ ì„ íƒ
+	int money = 0; //¼ÒÁö±İ
+	int choice; // À½·á ¼±ÅÃ
+	int num; // À½·á °³¼ö
+	int adLogin; // °ü¸®ÀÚ ·Î±×ÀÎ
+	int adChoice; // °ü¸®ÀÚ ¿É¼Ç ¼±ÅÃ
 	int c1000, c500, c100, c50, c10;
+	int index;
+	String remove;
+	String update;
+	String updateDrink;
 	Scanner sc = new Scanner(System.in);
 	
 	
-	//ê¸ˆì•¡ ì…ë ¥ë°›ê¸°
+	//±İ¾× ÀÔ·Â¹Ş±â
 	public void moneyScanner() {
-	System.out.println("ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
+	System.out.println("¼ÒÁö±İÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
 	while(true) {
 		if(input) {
 		try{
 			money = Integer.parseInt(sc.nextLine());
 			if(money%10==0 || money%50==0 || money%100==0 || money%500==0 || money%1000==0) {
 				input=false;
-				System.out.println("í˜„ì¬ ê¸ˆì•¡ì€ " + money +"ì› ì…ë‹ˆë‹¤.");
+				System.out.println("ÇöÀç ¼ÒÁö±İÀº " + money +"¿ø ÀÔ´Ï´Ù.");
 				break;
 			}else if(money<0){
-				System.out.println("0ì´ìƒì˜ ê°’ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+				System.out.println("0ÀÌ»óÀÇ °ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			}else {
-				System.out.println("10, 50, 100, 500, 1000ìœ¼ë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ” ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
+				System.out.println("10, 50, 100, 500, 1000À¸·Î ³ª´©¾î ¶³¾îÁö´Â ¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
 			}
 		}catch(Exception e) {
-			System.out.println("ìˆ«ìì™¸ì— ê°’ì´ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			System.out.println("¼ıÀÚ¿Ü¿¡ °ªÀÌ ÀÔ·ÂµÇ¾ú½À´Ï´Ù.");
 		}
 		}
 	}
-	//ë¬¸ì œì  : ìµœì € ê°’ë³´ë‹¤ ì ê²Œ ì…ë ¥í–ˆì„ ì‹œ
+	//¹®Á¦Á¡ : ÃÖÀú °ªº¸´Ù Àû°Ô ÀÔ·ÂÇßÀ» ½Ã
 	}
 
-//ê¸°ëŠ¥2,3 ìŒë£Œ ë½‘ê¸° /ìíŒê¸° ì¢…ë£Œ 
+//±â´É2,3 À½·á »Ì±â /ÀÚÆÇ±â Á¾·á 
 	public void drink(JapangiDTO[] jpArr) {
 		while(true) {
-			System.out.println("<<<<ìŒë£Œ ìíŒê¸°>>>>");
-			System.out.println("ë²ˆí˜¸|ìŒë£Œ|ê°€ê²©|ì¬ê³ ");
+			System.out.println("<<<<À½·á ÀÚÆÇ±â>>>>");
+			System.out.println("¹øÈ£|À½·á|°¡°İ|Àç°í");
 			System.out.println("================");
-			System.out.println(jpArr[0].getNum()+ ". " +jpArr[0].getDrink()+ "  " + jpArr[0].getPrice()+"ì›  "+jpArr[0].getCount()+"ê°œ");
-			System.out.println(jpArr[1].getNum()+ ". " +jpArr[1].getDrink()+ "  " + jpArr[1].getPrice()+"ì›  "+jpArr[1].getCount()+"ê°œ");
-			System.out.println(jpArr[2].getNum()+ ". " +jpArr[2].getDrink()+ "  " + jpArr[2].getPrice()+"ì›  "+jpArr[2].getCount()+"ê°œ");
-			System.out.println("ï¼Šêµ¬ë§¤ë¥¼ ì¢…ë£Œí•˜ì‹œë ¤ë©´ 0ë²ˆï¼Š");
-			System.out.println("ì£¼ë¬¸í•˜ì‹¤ ìŒë£Œ ë²ˆí˜¸ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”");
+			System.out.println(jpArr[0].getNum()+ ". " +jpArr[0].getDrink()+ "  " + jpArr[0].getPrice()+"¿ø  "+jpArr[0].getCount()+"°³");
+			System.out.println(jpArr[1].getNum()+ ". " +jpArr[1].getDrink()+ "  " + jpArr[1].getPrice()+"¿ø  "+jpArr[1].getCount()+"°³");
+			System.out.println(jpArr[2].getNum()+ ". " +jpArr[2].getDrink()+ "  " + jpArr[2].getPrice()+"¿ø  "+jpArr[2].getCount()+"°³");
+//			for(int i=0; i<jpArr.length; i++) {
+//				System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"¿ø  "+jpArr[i].getCount()+"°³");
+//			}  ->¹è¿­ Å©±â¶§¹®¿¡ nullexception ÀÏ¾î³²!
+			System.out.println("£ª±¸¸Å¸¦ Á¾·áÇÏ½Ã·Á¸é 0¹ø£ª");
+			System.out.println("ÁÖ¹®ÇÏ½Ç À½·á ¹øÈ£¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä");
 			choice = Integer.parseInt(sc.nextLine());
 				if(choice==1 && jpArr[0].getCount() ==0) {
-					System.out.println("ì½œë¼ ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë‹¤ë¥¸ ìŒë£Œìˆ˜ë¥¼ ê³¨ë¼ì£¼ì„¸ìš”.");
+					System.out.println("Äİ¶ó Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù. ´Ù¸¥ À½·á¼ö¸¦ °ñ¶óÁÖ¼¼¿ä.");
 				}else if(choice==1 && money>=jpArr[0].getPrice()) {
-					System.out.println("ëª‡ ê°œ êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+					System.out.println("¸î °³ ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?");
 					num=Integer.parseInt(sc.nextLine());
 					if(money>=jpArr[0].getPrice()*num) {
 						money -= jpArr[0].getPrice()*num;
-						System.out.println("ì½œë¼ë¥¼ " +num+ "ê°œ êµ¬ë§¤í•˜ì…¨ìŠµë‹ˆë‹¤. ì”ì•¡ì€ " + money + "ì…ë‹ˆë‹¤.");
+						System.out.println("Äİ¶ó¸¦ " + num + "°³ ±¸¸ÅÇÏ¼Ì½À´Ï´Ù.");
+						System.out.println("ÀÜ¾×Àº " + money + "ÀÔ´Ï´Ù."); 
 						jpArr[0].setCount(num);
 					}else {
-						System.out.println("ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
+						System.out.println("¼ÒÁö±İÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
 					}
 				}else if(choice==2 && jpArr[1].getCount() ==0) {
-					System.out.println("ì‚¬ì´ë‹¤ ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë‹¤ë¥¸ ìŒë£Œìˆ˜ë¥¼ ê³¨ë¼ì£¼ì„¸ìš”.");	
+					System.out.println("»çÀÌ´Ù Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù. ´Ù¸¥ À½·á¼ö¸¦ °ñ¶óÁÖ¼¼¿ä.");	
 					
 				}else if(choice==2 && money>=jpArr[1].getPrice()) {
-					System.out.println("ëª‡ ê°œ êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+					System.out.println("¸î °³ ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?");
 					num=Integer.parseInt(sc.nextLine());
 					if(money>=jpArr[1].getPrice()*num) {
 						money -= jpArr[1].getPrice()*num;
-						System.out.println("ì‚¬ì´ë‹¤ë¥¼ êµ¬ë§¤í•˜ì…¨ìŠµë‹ˆë‹¤. ì”ì•¡ì€ " + money + "ì…ë‹ˆë‹¤.");
-						System.out.println(jpArr[1].getCount());
+						System.out.println("»çÀÌ´Ù¸¦ " + num + "°³ ±¸¸ÅÇÏ¼Ì½À´Ï´Ù.");
+						System.out.println("ÀÜ¾×Àº " + money + "ÀÔ´Ï´Ù."); 
 						jpArr[1].setCount(num);
 					}else {
-						System.out.println("ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
+						System.out.println("¼ÒÁö±İÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
 					}
 				}else if(choice==3 && jpArr[2].getCount() ==0) {
-					System.out.println("í™˜íƒ€ ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë‹¤ë¥¸ ìŒë£Œìˆ˜ë¥¼ ê³¨ë¼ì£¼ì„¸ìš”.");
+					System.out.println("È¯Å¸ Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù. ´Ù¸¥ À½·á¼ö¸¦ °ñ¶óÁÖ¼¼¿ä.");
 				}else if(choice==3 && money>=jpArr[2].getPrice()) {
-					System.out.println("ëª‡ ê°œ êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+					System.out.println("¸î °³ ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?");
 					num=Integer.parseInt(sc.nextLine());
 					if(money>=jpArr[2].getPrice()*num) {
 						money -= jpArr[2].getPrice()*num;
-						System.out.println("ì‚¬ì´ë‹¤ë¥¼ êµ¬ë§¤í•˜ì…¨ìŠµë‹ˆë‹¤. ì”ì•¡ì€ " + money + "ì…ë‹ˆë‹¤.");
-						System.out.println(jpArr[2].getCount());
+						System.out.println("È¯Å¸¸¦ " + num + "°³ ±¸¸ÅÇÏ¼Ì½À´Ï´Ù.");
+						System.out.println("ÀÜ¾×Àº " + money + "ÀÔ´Ï´Ù."); 
 						jpArr[2].setCount(num);
 					}else {
-						System.out.println("ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
+						System.out.println("¼ÒÁö±İ ºÎÁ·ÇÕ´Ï´Ù.");
 					}
 				}else if(choice>3){
-					System.out.println("ë²ˆí˜¸ë¥¼ ì˜ëª»ì…ë ¥í–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+					System.out.println("¹øÈ£¸¦ Àß¸øÀÔ·ÂÇß½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 				}else {
-					System.out.println("ì•ˆë…•íˆê°€ì„¸ìš”");
-					// ì •í•´ì§„ ë‹¨ìœ„ë¡œ ì”ëˆ ë°˜í™˜í•´ì•¼í•¨
+					System.out.println("----¾È³çÈ÷°¡¼¼¿ä.----");
+					// Á¤ÇØÁø ´ÜÀ§·Î ÀÜµ· ¹İÈ¯ÇØ¾ßÇÔ
 					c1000=money/1000;
 					c500=money%1000/500;
 					c100=money%1000%500/100;
 					c50=money%1000%500%100/50;
 					c10=money%1000%500%100%50/10;
 					if(money>=1000) {
-						System.out.println("ì”ì•¡ì€ 1000ì›: " + c1000 +"ê°œ /" + "500ì›: " + c500 + "ê°œ /" 
-											+ "100ì›: " + c100 +"ê°œ /" + "50ì›: " + c50 + "ê°œ /" + "10ì›: "+c10+"ê°œ" ); 						
+						System.out.println("ÀÜµ·À» ¹İÈ¯ÇÕ´Ï´Ù -> ");
+						System.out.println("1000¿ø: " + c1000 +"°³ /" + "500¿ø: " + c500 + "°³ /" 
+											+ "100¿ø: " + c100 +"°³ /" + "50¿ø: " + c50 + "°³ /" + "10¿ø: "+c10+"°³" );
 					}else if(money>=500) {
-						System.out.println("ì”ì•¡ì€ 500ì›: " + c500 + "ê°œ /" + "100ì›: " + c100 +"ê°œ /" 
-											+ "50ì›: " + c50 + "ê°œ /" + "10ì›: "+c10+"ê°œ" );
+						System.out.println("ÀÜµ·À» ¹İÈ¯ÇÕ´Ï´Ù -> ");
+						System.out.println("500¿ø: " + c500 + "°³ /" + "100¿ø: " + c100 +"°³ /" 
+											+ "50¿ø: " + c50 + "°³ /" + "10¿ø: "+c10+"°³" );	
+								
 					}else if(money>=100) {
-						System.out.println("ì”ì•¡ì€ 100ì›: " + c100 +"ê°œ /" + "50ì›: " + c50 + "ê°œ /" + "10ì›: "+c10+"ê°œ" );
+						System.out.println("ÀÜµ·À» ¹İÈ¯ÇÕ´Ï´Ù -> ");
+						System.out.println("100¿ø: " + c100 +"°³ /" + "50¿ø: " + c50 + "°³ /" + "10¿ø: "+c10+"°³" );
 					}else if(money>=50) {
-						System.out.println("ì”ì•¡ì€ 50ì›: " + c50 + "ê°œ /" + "10ì›: "+c10+"ê°œ" );					
+						System.out.println("ÀÜµ·À» ¹İÈ¯ÇÕ´Ï´Ù -> "); 
+						System.out.println("50¿ø: " + c50 + "°³ /" + "10¿ø: "+c10+"°³" );
 						}else {
-							System.out.println("ì”ì•¡ì€ 10ì›: "+c10+"ê°œ" );
+						System.out.println("ÀÜµ·À» ¹İÈ¯ÇÕ´Ï´Ù -> ");
+						System.out.println("10¿ø: "+c10+"°³" );
 					}
 					break;
 				}
 				
 		}
 	}
-	
+
 	public void admin(JapangiDTO[] jpArr) {
-		String adminId = sc.nextLine(); 
-		String adminPw = sc.nextLine();
+		System.out.println("°ü¸®ÀÚ °èÁ¤¿¡ ·Î±×ÀÎÇÏ½Ã°Ú½À´Ï±î?");
+		System.out.println("1. yes / 2. no");
+		adLogin=Integer.parseInt(sc.nextLine());
+		if(adLogin==1) {
+			System.out.println("¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.print("¾ÆÀÌµğ: ");
+			String adminId = sc.nextLine();
+			System.out.print("ºñ¹Ğ¹øÈ£: ");
+			String adminPw = sc.nextLine();
+			
 			if(adminId.equals("master")&&adminPw.equals("admin")) {
 				while(true) {
-					System.out.println("0ë²ˆ ì–´ë–¤ ê¸°ëŠ¥ì´ë“  ìŒë£Œì˜ ì „ì²´ ëª©ë¡ì„ ë³´ì—¬ì¤€ë‹¤.");
-					System.out.println("1ë²ˆ ìŒë£Œ ì¶”ê°€ - ìŒë£Œì˜ ëª©ë¡ì— ìƒˆë¡œìš´ ìŒë£Œë¥¼ ì¶”ê°€í•œë‹¤.");
-					System.out.println("2ë²ˆ ìŒë£Œ ìˆ˜ì • - ìŒë£Œì˜ ëª©ë¡ì— ìˆëŠ” ì •ë³´ë¥¼ ìˆ˜ì •í•œë‹¤.");
-					System.out.println("3ë²ˆ ìŒë£Œ ì‚­ì œ - ìŒë£Œì˜ ëª©ë¡ì— ìˆëŠ” ì •ë³´ë¥¼ ì‚­ì œí•œë‹¤.");
+					System.out.println("0¹ø ¾î¶² ±â´ÉÀÌµç À½·áÀÇ ÀüÃ¼ ¸ñ·ÏÀ» º¸¿©ÁØ´Ù.");
+					System.out.println("1¹ø À½·á Ãß°¡ - À½·áÀÇ ¸ñ·Ï¿¡ »õ·Î¿î À½·á¸¦ Ãß°¡ÇÑ´Ù.");
+					System.out.println("2¹ø À½·á ¼öÁ¤ - À½·áÀÇ ¸ñ·Ï¿¡ ÀÖ´Â Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.");
+					System.out.println("3¹ø À½·á »èÁ¦ - À½·áÀÇ ¸ñ·Ï¿¡ ÀÖ´Â Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.");
+					System.out.println("4¹ø °ü¸®ÀÚ ¸ğµå Á¾·á!");
 					adChoice = Integer.parseInt(sc.nextLine());
 					if(adChoice==0) {
-						for(int i=0; i<jpArr[2].getNum(); i++) {
-							System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"ì›  "+jpArr[i].getCount()+"ê°œ");
+						index=jpArr.length;
+						for(int i=0; i<index; i++) {
+							System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"¿ø  "+jpArr[i].getCount()+"°³");
 						}	
 						
 					}else if(adChoice==1) {
-						jpArr[3] = new JapangiDTO(4, "ì œë¡œì½œë¼", 700, 2);
+//						index=jpArr.length;
+//						for(int i=0; i<index; i++) {
+//							System.out.println("");
+//						}
+						
+						for(int i=0; i<jpArr.length; i++) {							
+							jpArr[jpArr.length-1] = new JapangiDTO(4, "Á¦·ÎÄİ¶ó", 700, 3);
+							System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"¿ø  "+jpArr[i].getCount()+"°³");
+							
+						}
 					}else if(adChoice==2) {
-						jpArr[3] = new JapangiDTO(4, "ì›°ì¹˜ìŠ¤", 800, 3);
+						index=jpArr.length;
+							System.out.println("º¯°æÇÏ½Ç À½·á¸íÀÌ ¹«¾ùÀÎ°¡¿ä?");
+							update=sc.nextLine();
+							for(int i=0; i<index; i++) {
+							if(update.equals(jpArr[i].getDrink())) {
+								update=jpArr[i].getDrink();
+								System.out.println("º¯°æ ÈÄÀÇ À½·á¸í :");
+								updateDrink=sc.nextLine();
+									 break;  
+							}	
+						}
+							for(int i=0; i<index; i++) {
+								System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"¿ø  "+jpArr[i].getCount()+"°³");
+							}
+					}else if(adChoice==3) {
+						index=jpArr.length;
+						System.out.println("¾î¶² À½·á¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+						remove=sc.nextLine();
+						for(int i=0; i<index; i++) {
+							if(remove.equals(jpArr[i].getDrink())) {
+								System.out.println(remove + "¸¦ »èÁ¦ÇÕ´Ï´Ù.");
+								for(int j=i; j<index; j++) {	
+								 index--; 
+								}		
+							}	
+						}
+						for(int i=0; i<index; i++) {
+							System.out.println(jpArr[i].getNum()+".  "+jpArr[i].getDrink()+"   "+jpArr[i].getPrice()+"¿ø  "+jpArr[i].getCount()+"°³");
+						}
+					}else if(adChoice==4) {
+						System.out.println("À¯Àú¸ğµå·Î ÀüÈ¯µË´Ï´Ù..");
+						System.out.println("(À¯Àú¸ğµå)");
+						break;
 					}
-					
 				}
+			}else  {
+				System.out.println("¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù.");
+			
 			}
+		}else if(adLogin==2) {
+			System.out.println("Á¾·á!");
 		}
-		
-}
+		}
+	}
+	
+
+
