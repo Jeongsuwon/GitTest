@@ -3,7 +3,7 @@ package Test_01;
 public class JapangiDTO {
 
 	
-//num(번호) , drink(음료), price(가격), count(수량)	
+	//num(번호) , drink(음료), price(가격), count(수량)	
 	private int num;
 	private String drink;
 	private int price, count;
@@ -27,7 +27,7 @@ public class JapangiDTO {
 	}
 
 	public void setNum(int num) {
-		this.num = num;
+		this.num += num;
 	}
 
 	public String getDrink() {
@@ -51,12 +51,8 @@ public class JapangiDTO {
 	}
 
 	public void setCount(int count) {
-		if(count<0) {
-			this.count=0;
-			return;
-		}else {
-		this.count = count;
-	}
+		this.count -= count;
+	
 	
 	}
 }
