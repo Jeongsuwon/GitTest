@@ -19,6 +19,7 @@ public class lottoMain {
 			int money = cnt * 1000;
 			System.out.println(money+"이 결제됩니다.");
 			}
+			
 		}
 			
 		
