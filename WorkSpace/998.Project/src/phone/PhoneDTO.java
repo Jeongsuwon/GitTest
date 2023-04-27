@@ -2,12 +2,12 @@ package phone;
 
 public class PhoneDTO {
 	String color, model;
-	boolean power;
-	
-	public PhoneDTO(String color, String model, boolean power) {
+	String state;
+	public PhoneDTO(String color, String model, String state) {
+		super();
 		this.color = color;
 		this.model = model;
-		this.power = power;
+		this.state = state;
 	}
 	public String getColor() {
 		return color;
@@ -21,10 +21,11 @@ public class PhoneDTO {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public boolean isPower() {
-		return power;
+	public String getState() {
+		return state;
 	}
-	public void setPower(boolean power) {
-		this.power = power;
+	public void setState(String state) {
+		this.state = state;
 	}
+	
 }
