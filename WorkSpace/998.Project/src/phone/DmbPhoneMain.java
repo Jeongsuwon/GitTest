@@ -2,11 +2,11 @@ package phone;
 
 import java.util.Scanner;
 
-public class PhoneMain {
+public class DmbPhoneMain {
 	public static void main(String[] args) {
 		boolean power = false;
 		Scanner sc = new Scanner(System.in);
-		PhoneDAO dao = new PhoneDAO();
+		DmbPhoneDAO dao = new DmbPhoneDAO();
 		dao.mobile();
 			System.out.println("현재 휴대폰 전원이 꺼져있습니다.");
 			while(true) {
@@ -48,5 +48,4 @@ public class PhoneMain {
 		
 		
 	}
-
 }

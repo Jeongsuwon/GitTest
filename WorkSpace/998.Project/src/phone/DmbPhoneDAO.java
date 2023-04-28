@@ -2,11 +2,11 @@ package phone;
 
 import java.util.Scanner;
 
-public class PhoneDAO {
+public class DmbPhoneDAO extends PhoneDAO {
 	Scanner sc = new Scanner(System.in);
-	PhoneDTO dto = new PhoneDTO("검정", "CT폰", "종료");
+	DmbPhoneDTO dto = new DmbPhoneDTO("검정", "아이폰11", "종료", "정보없음");
 	public void mobile() {
-	System.out.println("1세대 폰(색상:" + dto.color + ", 모델명: " + dto.model + ", 상태: " + dto.state + ")가 지급되었습니다.");
+	System.out.println("2세대 폰(색상:" + dto.color + ", 모델명: " + dto.model + ", 상태: " + dto.state + ", 채널: " + dto.channel + ")가 지급되었습니다.");
 	}
 	
 	
@@ -80,5 +80,9 @@ public class PhoneDAO {
 				}
 	}
 	}
+//	
+//	public void dmb() {
+//		if(channel.)
+//	}
 	
 }
