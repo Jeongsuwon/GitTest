@@ -10,7 +10,8 @@ public class DmbMain {
 		Scanner sc = new Scanner(System.in);
 		PhoneDAO dao = new PhoneDAO();
 		DmbDAO dmb = new DmbDAO();
-		System.out.println("1. 1세대 / 2. 2세대");
+		System.out.println("핸드폰 세대를 골라주세요.");
+		System.out.println("1. 1세대(전화) / 2. 2세대(전화, DMB)");
 		int gen = dao.inputInt();
 		if(gen==1) {
 		dao.mobile();
@@ -74,13 +75,14 @@ public class DmbMain {
 							if(dmbBye.equals("yes")) {
 								dao.gen1();
 								dao.function();
-								continue;
 							}else if(dmbBye.equals("no")) {
-								break;
+								
 							}else {
 								System.out.println("잘못된 입력입니다.");
 							}
+							break;
 							}
+							
 						}else if(genCho==2) {
 						dao.gen1();
 						dao.function();
