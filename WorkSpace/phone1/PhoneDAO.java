@@ -70,7 +70,7 @@ public class PhoneDAO {
 			try {
 				int inputInt = Integer.parseInt(sc.nextLine());
 				while(true) {
-				if(inputInt<0||inputInt>2) {
+				if(inputInt<0||inputInt>3) {
 					System.out.println("잘못된 선택입니다.");
 					
 				}
