@@ -76,11 +76,11 @@ public class DmbMain {
 								dao.gen1();
 								dao.function();
 							}else if(dmbBye.equals("no")) {
-								
+								break;
 							}else {
 								System.out.println("잘못된 입력입니다.");
 							}
-							break;
+							
 							}
 							
 						}else if(genCho==2) {

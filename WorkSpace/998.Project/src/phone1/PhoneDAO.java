@@ -46,13 +46,6 @@ public class PhoneDAO {
 		}else {
 			continue;
 		}
-		}else if(dto.state.equals("전원꺼짐")) {
-				System.out.println("1.전화받기 / 2.수신거부");
-				if(callSign == 1 || callSign==2) {
-				System.out.println("전원이 꺼져있어 기능을 연결할 수 없습니다.(현재상태: " + dto.state + ")");
-				System.out.println("전원을 켜주세요.");	
-				}
-				
 		}
 	break;
 		}
@@ -70,7 +63,7 @@ public class PhoneDAO {
 			try {
 				int inputInt = Integer.parseInt(sc.nextLine());
 				while(true) {
-				if(inputInt<0||inputInt>2) {
+				if(inputInt<0||inputInt>3) {
 					System.out.println("잘못된 선택입니다.");
 					
 				}
