@@ -1,4 +1,4 @@
-package last_test;
+package test;
 
 public class UserDTO {
 	private String member_id, member_pw, member_name, member_call;
