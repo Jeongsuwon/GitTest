@@ -204,15 +204,17 @@ package last_test;
 	    	System.out.println(dto.getMember_pw());
 	    	try {
 				conn = conn();
-				ps = conn.prepareStatement(" update member set member_pw = ?"
+				ps = conn.prepareStatement(" update member set member_pw = ?, member_name = ?, member_call = ?, member_ age = ?"
 						+ " where member_id = ?");
 				System.out.print("아이디: ");
 				exceptionId();
-				ps.setString(1, dto.getMember_id());
-				System.out.print("비밀번호: ");
-				exceptionPw();
-				dto.setMember_pw(pw);
-				ps.setString(2, dto.getMember_pw());
+				dto.setMember_id(id);
+				ps.setString(5, dto.getMember_id());
+				ps.setString(1, dto.getMember_pw());
+				ps.setString(2, dto.getMember_name());
+				ps.setString(3, dto.getMember_call());
+				ps.setInt(4, dto.getMember_age());
+				
 				result = ps.executeUpdate();
 				if(result!=0) {
 					System.out.println("회원수정이 완료되었습니다.");
