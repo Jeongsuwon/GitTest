@@ -1,14 +1,9 @@
-package test;
+package last_test;
 
 public class UserDTO {
 	private String member_id, member_pw, member_name, member_call;
 	private int member_age;
-	public UserDTO(String member_id, String member_pw, String member_name, String member_call, int member_age) {
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_name = member_name;
-		this.member_call = member_call;
-		this.member_age = member_age;
+	public UserDTO() {
 	}
 	public String getMember_id() {
 		return member_id;
