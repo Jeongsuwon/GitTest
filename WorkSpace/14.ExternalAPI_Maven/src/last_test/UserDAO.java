@@ -1,7 +1,6 @@
-package last_test;
+package test;
 
-
-	import java.sql.Connection;
+import java.sql.Connection;
 	import java.sql.DriverManager;
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
@@ -202,18 +201,49 @@ package last_test;
 	    public void update(UserDTO dto) { //회원정보 수정
 	    	System.out.println(dto.getMember_id());
 	    	System.out.println(dto.getMember_pw());
+	    	System.out.println(dto.getMember_name());
+	    	System.out.println(dto.getMember_call());
+	    	System.out.println(dto.getMember_age());
+	    	String sql = "select * from member where member_id = ?";
 	    	try {
+	    		selectList();
 				conn = conn();
-				ps = conn.prepareStatement(" update member set member_pw = ?, member_name = ?, member_call = ?, member_ age = ?"
-						+ " where member_id = ?");
-				System.out.print("아이디: ");
-				exceptionId();
-				dto.setMember_id(id);
+//				ps = conn.prepareStatement(sql);
+//				rs = ps.executeQuery();
+				ps = conn.prepareStatement
+				(" update member set member_pw = ?, member_name = ?, member_call = ?, member_ age = ? where member_id = ?");
+				System.out.println("[1]비밀번호 [2]이름 [3]전화번호 [4]나이 [5]종료");
+				int num = intInput();
+				switch(num) {
+				case 1:
+					System.out.print("변경할 비밀번호:");
+					pw=sc.nextLine();
+					dto.setMember_pw(pw);
+					System.out.println(pw);
+					ps.setString(1, dto.getMember_pw());
+					break;
+				case 2:
+					System.out.print("변경할 이름:");
+					name=sc.nextLine();
+					dto.setMember_pw(name);
+					ps.setString(2, dto.getMember_name());
+					break;
+				case 3:
+					System.out.print("변경할 전화번호:");
+					call=sc.nextLine();
+					dto.setMember_pw(call);
+					ps.setString(3, dto.getMember_call());
+					break;
+				case 4:
+					System.out.print("변경할 나이:");
+					age=intInput();
+					dto.setMember_age(age);
+					ps.setInt(4, dto.getMember_age());
+					break;
+				case 5:
+					break;
+				}
 				ps.setString(5, dto.getMember_id());
-				ps.setString(1, dto.getMember_pw());
-				ps.setString(2, dto.getMember_name());
-				ps.setString(3, dto.getMember_call());
-				ps.setInt(4, dto.getMember_age());
 				
 				result = ps.executeUpdate();
 				if(result!=0) {
@@ -280,5 +310,7 @@ package last_test;
 			return false;
 	    }
 	
-
+	    public void board() {
+	    	
+	    }
 }

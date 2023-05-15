@@ -1,4 +1,4 @@
-package last_test;
+package test;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -87,7 +87,7 @@ public class TestMain {
 			} else if (function == 2) {
 				String[][] tempCategory = { 
 					{"T1H" , "기온" },
-					{"RN1" , "강수량" },
+					{"RN1" , "1시간 내 강수량" },
 					{"REH" , "습도" },
 					{"PTY" , "강수형태" },
 					{"VEC" , "풍향" },
@@ -124,7 +124,7 @@ public class TestMain {
 				
 				try {
 					doc = Jsoup.connect(url).data("pageNo", "1").data("numOfRows", "10").data("dataType", "Json")
-							.data("base_date", today).data("base_time", hour).data("nx", "59").data("ny", "75")
+							.data("base_date", today).data("base_time", hour).data("nx", "58").data("ny", "74")
 							.data("serviceKey",
 									"kmc0ZV1P4EDjawY1Lf6lvCWeZXhgexI8O3A59ZNccISKWGOaO4IIUn+TAO8dYHAhjcPOkkGwsioB7rC1UgPOCQ==")
 							.timeout(1000 * 40).userAgent("chrome").ignoreContentType(true).execute().body();
@@ -141,8 +141,8 @@ public class TestMain {
 					jsonObj = (JSONObject) jsonObj.get("items");
 					JSONArray array = (JSONArray) jsonObj.get("item");
 					System.out.println("array담기 성공(JsonArray)");
-					System.out.println("날짜:" + formatdate + " | " + "예보시간:" + formathour);
-					System.out.println("=================================");
+					System.out.println("날짜:" + formatdate + " | " + "예보시간:" + formathour + " | 위치:광주광역시");
+					System.out.println("========================================");
 					for (int i = 0; i < array.size(); i++) {
 						JSONObject tempObj = (JSONObject) array.get(i);
 					//	System.out.println("카테고리 obj"+tempObj.get("category"));
@@ -151,33 +151,19 @@ public class TestMain {
 							if (tempObj.get("category").equals(tempCategory[j][0])) {
 								System.out
 										.println(tempCategory[j][1] + ": " + tempObj.get("obsrValue"));
+	
 							}
 						}
 
-						// +"날씨: " +tempObj.get(category)
 					}
 				} catch (Exception e) {
 					// String json이 key와 value를 가진 데이터가 아닌 그냥 일반 문자열이라면 오류가 발생.
 					e.printStackTrace();
 				}
-
+				
 				System.out.println(doc);
 
-//			String[] v = new String[5];
-//			String s = Weather.get(59, 75, v); // 광주광역시 북구 일곡동
-//			
-//			if (s == null)
-//			{ // ok!
-//				System.out.println("날짜 : " + v[0]);
-//				System.out.println("시간 : " + v[1]);
-//				System.out.println("날씨 : " + v[2]);
-//				System.out.println("기온 : " + v[3] + "℃");
-//				System.out.println("습도 : " + v[4] + "%");
-//			}
-//			else
-//			{ // error
-//				System.out.println("Error : " + s);
-//			}
+
 
 			} else if (function == 0) {
 				System.out.println("종료합니다.");

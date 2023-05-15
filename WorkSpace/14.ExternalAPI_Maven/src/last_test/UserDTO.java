@@ -1,10 +1,9 @@
-package last_test;
+package test;
 
 public class UserDTO {
 	private String member_id, member_pw, member_name, member_call;
 	private int member_age;
-	public UserDTO() {
-	}
+
 	public String getMember_id() {
 		return member_id;
 	}
